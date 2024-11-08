@@ -21,13 +21,14 @@ export const Routing = () => {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-
+          {/* Cargamos los componentes de la ruta pública en rutas anidadas*/}
           <Route path="/" element={<PublicLayout />}>
             <Route index element={<Login />} />
             <Route path='login' element={<Login />} />
             <Route path='registro' element={<Register />} />
           </Route>
 
+          {/* Cargamos los componentes de la ruta privada  en rutas anidadas*/}
           <Route path="/rsocial" element={<PrivateLayout />}>
             <Route index element={<Feed />} />
             <Route path='feed' element={<Feed />} />
@@ -40,7 +41,10 @@ export const Routing = () => {
             <Route path="mis-publicaciones" element={<MyPublications />} />
             <Route path="publicacion/:id" element={<PublicationDetail />} />
           </Route>
+
+          {/* Configuramos la ruta para el error 404 */}
           <Route path="*" element={<Error404 />} />
+
         </Routes>
       </AuthProvider>
     </BrowserRouter>
